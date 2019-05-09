@@ -27,7 +27,11 @@ docker run -d \\
 
 sh /usr/local/src/tracker.sh
 
+
+
 #2)在192.168.25.124上运行storage server
+
+
 
 docker run -d --name fdfs_storage \\
 
@@ -54,7 +58,10 @@ docker run -d --name fdfs_storage \\
 sh /usr/local/src/storage.sh
 
 
+
 #3)在192.168.25.125上运行tracker server
+
+
 
 docker run -d \\
 
@@ -73,7 +80,10 @@ docker run -d \\
 sh /usr/local/src/tracker.sh
 
 
+
 #4)在192.168.25.125上运行storage server
+
+
 
 docker run -d --name fdfs_storage \\
 
