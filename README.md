@@ -12,54 +12,91 @@ docker push 192.168.25.124:5000/fastdfs:5.11
 #1)在192.168.25.124上运行tracker server
 
 docker run -d \\
+
 --name fdfs_tracker \\
+
 -v /home/fastdfs/tracker:/export/fastdfs/tracker \\
+
 --net=host \\
+
 -e TRACKER_BASE_PATH=/export/fastdfs/tracker \\
+
 -e TRACKER_PORT=22123 \\
+
 192.168.25.124:5000/fastdfs:5.11  \\
+
 sh /usr/local/src/tracker.sh
 
 #2)在192.168.25.124上运行storage server
 
 docker run -d --name fdfs_storage \\
+
 -v /home/fastdfs/storage:/export/fastdfs/storage \\
+
 --net=host \\
+
 -e STORAGE_PORT=23001 \\
+
 -e STORAGE_BASE_PATH=/export/fastdfs/storage \\
+
 -e STORAGE_PATH0=/export/fastdfs/storage \\
+
 -e TRACKER_SERVER=192.168.25.124:22123,192.168.25.125:22123 \\
+
 -e GROUP_COUNT=1 \\
+
 -e HTTP_SERVER_PORT=8081 \\
+
 -e GROUP_NAME=group1 \\
+
 192.168.25.124:5000/fastdfs:5.11 \\
+
 sh /usr/local/src/storage.sh
 
 
 #3)在192.168.25.125上运行tracker server
 
 docker run -d \\
+
 --name fdfs_tracker \\
+
 -v /home/fastdfs/tracker:/export/fastdfs/tracker \\
+
 --net=host \\
+
 -e TRACKER_BASE_PATH=/export/fastdfs/tracker \\
+
 -e TRACKER_PORT=22123 \\
+
 192.168.25.124:5000/fastdfs:5.11  \\
+
 sh /usr/local/src/tracker.sh
+
 
 #4)在192.168.25.125上运行storage server
 
 docker run -d --name fdfs_storage \\
+
 -v /home/fastdfs/storage:/export/fastdfs/storage \\
+
 --net=host \\
+
 -e STORAGE_PORT=23001 \\
+
 -e STORAGE_BASE_PATH=/export/fastdfs/storage \\
+
 -e STORAGE_PATH0=/export/fastdfs/storage \\
+
 -e TRACKER_SERVER=192.168.25.124:22123,192.168.25.125:22123 \\
+
 -e GROUP_COUNT=1 \\
+
 -e HTTP_SERVER_PORT=8081 \\
+
 -e GROUP_NAME=group1 \\
+
 192.168.25.124:5000/fastdfs:5.11 \\
+
 sh /usr/local/src/storage.sh
 
 ---------------------------------------------------------------------------
