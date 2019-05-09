@@ -11,13 +11,13 @@ docker push 192.168.25.124:5000/fastdfs:5.11
 ---------------------------------------------------------------------------
 #1)在192.168.25.124上运行tracker server
 
-docker run -d \
---name fdfs_tracker \
--v /home/fastdfs/tracker:/export/fastdfs/tracker \
---net=host \
--e TRACKER_BASE_PATH=/export/fastdfs/tracker \
--e TRACKER_PORT=22123 \
-192.168.25.124:5000/fastdfs:5.11  \
+docker run -d \\
+--name fdfs_tracker \\
+-v /home/fastdfs/tracker:/export/fastdfs/tracker \\
+--net=host \\
+-e TRACKER_BASE_PATH=/export/fastdfs/tracker \\
+-e TRACKER_PORT=22123 \\
+192.168.25.124:5000/fastdfs:5.11  \\
 sh /usr/local/src/tracker.sh
 
 #2)在192.168.25.124上运行storage server
