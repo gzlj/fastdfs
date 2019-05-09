@@ -113,6 +113,12 @@ sh /usr/local/src/storage.sh
 
 进入容器或者在宿主机上查看日志：发现tracker server有两个，其中leader tracker server是192.168.25.124:22123
 
+[root@cool logs]# ip addr show | grep 192.168.25.125
+
+    inet 192.168.25.125/24 brd 192.168.25.255 scope global noprefixroute ens33
+    
+[root@cool logs]# cd /home/fastdfs/storage/logs
+
 [root@cool logs]# tail storaged.log 
 
 data path: /export/fastdfs/storage/data, mkdir sub dir done.
