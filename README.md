@@ -9,7 +9,7 @@ docker build -t 192.168.25.124:5000/fastdfs:5.11 .
 docker push 192.168.25.124:5000/fastdfs:5.11
 
 ---------------------------------------------------------------------------
-#在192.168.25.124上运行tracker server
+#1)在192.168.25.124上运行tracker server
 
 docker run -d \
 --name fdfs_tracker \
@@ -20,7 +20,7 @@ docker run -d \
 192.168.25.124:5000/fastdfs:5.11  \
 sh /usr/local/src/tracker.sh
 
-#在192.168.25.124上运行storage server
+#2)在192.168.25.124上运行storage server
 
 docker run -d --name fdfs_storage \
 -v /home/fastdfs/storage:/export/fastdfs/storage \
@@ -36,7 +36,7 @@ docker run -d --name fdfs_storage \
 sh /usr/local/src/storage.sh
 
 
-#在192.168.25.125上运行tracker server
+#3)在192.168.25.125上运行tracker server
 
 docker run -d \
 --name fdfs_tracker \
@@ -47,7 +47,7 @@ docker run -d \
 192.168.25.124:5000/fastdfs:5.11  \
 sh /usr/local/src/tracker.sh
 
-#在192.168.25.125上运行storage server
+#4)在192.168.25.125上运行storage server
 
 docker run -d --name fdfs_storage \
 -v /home/fastdfs/storage:/export/fastdfs/storage \
